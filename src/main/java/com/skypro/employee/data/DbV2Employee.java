@@ -3,7 +3,7 @@ package com.skypro.employee.data;
 import com.skypro.employee.model.V2Employee;
 
 public class DbV2Employee implements Employe {
-    private V2Employee employee;
+    private final V2Employee employee;
 
     /**
      * Вторичнйы конструктор
@@ -26,7 +26,11 @@ public class DbV2Employee implements Employe {
         this.employee = employee;
     }
     @Override
-    public V2Employee fetch() {
-        return V2EmployeeData.findEmployee(this.employee);
+    public V2Employee fetch() throws Exception {
+        try {
+            return V2EmployeeData.findEmployee(this.employee);
+        } catch (Exception e) {
+            throw new Exception("Пользователь не найден!", e);
+        }
     }
 }

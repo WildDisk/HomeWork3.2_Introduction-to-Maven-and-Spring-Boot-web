@@ -44,14 +44,15 @@ public class V2EmployeeData {
         );
     }
 
-    public static V2Employee findEmployee(V2Employee employee) {
-        return employees.stream()
+    public static V2Employee findEmployee(V2Employee employee) throws Exception {
+        var findEmpl = employees.stream()
                 .filter(it ->
                         it.id() == employee.id()
                                 || (Objects.equals(it.firstName(), employee.firstName())
                                 && Objects.equals(it.lastName(), employee.lastName()))
                 ) //Фильтруем коллекцию по id или по имени и фамилии
-                .toList() //Все найденые результаты приводим в формат нового листа ибо стал stream
-                .get(0); //Выбераем первый попавшийся;
+                .toList(); //Все найденые результаты приводим в формат нового листа ибо стал stream
+        if (findEmpl.isEmpty()) throw new Exception("Список пользователей пуст!"); //Проверяем пустой ли список
+        else return findEmpl.get(0); //Если не пустой, то берём первый элемент списка
     }
 }
