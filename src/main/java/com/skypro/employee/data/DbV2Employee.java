@@ -30,7 +30,7 @@ public class DbV2Employee implements Employe {
         try {
             return V2EmployeeData.findEmployee(this.employee);
         } catch (Exception e) {
-            throw new Exception("Пользователь не найден!", e);
+            throw new Exception("Сотрудник не найден!", e);
         }
     }
 }

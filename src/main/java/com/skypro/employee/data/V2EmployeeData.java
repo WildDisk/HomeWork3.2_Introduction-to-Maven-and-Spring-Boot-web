@@ -52,7 +52,7 @@ public class V2EmployeeData {
                                 && Objects.equals(it.lastName(), employee.lastName()))
                 ) //Фильтруем коллекцию по id или по имени и фамилии
                 .toList(); //Все найденые результаты приводим в формат нового листа ибо стал stream
-        if (findEmpl.isEmpty()) throw new Exception("Список пользователей пуст!"); //Проверяем пустой ли список
+        if (findEmpl.isEmpty()) throw new Exception("Список сотрудников пуст!"); //Проверяем пустой ли список
         else return findEmpl.get(0); //Если не пустой, то берём первый элемент списка
     }
 }
